@@ -378,20 +378,22 @@ const keys = [
   },
 ];
 
-
 let title = document.createElement("h2");
 let doc = document.querySelector("body");
-title.innerHTML = "Клавиатура <br> Для смены языка используйте специальную кнопку либо комбинацию Shift+Ctrl";
+title.innerHTML =
+  "Клавиатура <br> Для смены языка используйте специальную кнопку либо комбинацию Shift+Ctrl";
 doc.append(title);
 let inputContainer = document.createElement("div");
-inputContainer.className = "inputContainer"
+inputContainer.className = "inputContainer";
 let input = document.createElement("textarea");
-input.className = "input"
+input.className = "input";
 input.rows = 20;
-input.cols = 150
+input.cols = 150;
 doc.append(inputContainer);
 inputContainer.append(input);
 
+let caps = false;
+let lang = "en";
 
 function initialize() {
   let container = document.createElement("div");
@@ -401,13 +403,13 @@ function initialize() {
   for (let i = 0; i < keys.length; i++) {
     button = document.createElement("button");
     button.className = keys[i].class;
-    button.textContent = `${keys[i].key.en}`;
+    button.textContent = keys[i].key.en;
     document.querySelector(".controll").append(button);
   }
 }
 
-let kb = document.querySelectorAll('.key');
-let textarea = document.querySelector('.input');
+let kb = document.querySelectorAll(".key");
+let textarea = document.querySelector(".input");
 initialize();
 function texter(event) {
   textarea.focus();
@@ -417,14 +419,80 @@ function texter(event) {
   }
 }
 
-kb.forEach(e => {
-  e.addEventListener('click', event => 
-  console.log(event.code))
-})
+kb.forEach((e) => {
+  e.addEventListener("click", (event) => console.log(event.code));
+});
 
-let tab = document.querySelector('.Tab');
-tab.addEventListener('click', () => console.log(textarea.value))
-   
+let tab = document.querySelector(".Tab");
+tab.addEventListener("click", () => (textarea.value += tab.textContent));
+let keyQ = document.querySelector(".KeyQ");
+keyQ.addEventListener("click", () => (textarea.value += keyQ.textContent));
+
+let bckspc = document.querySelector(".Backspace");
+bckspc.addEventListener("click", () => (textarea.value.length -= 1));
+
+let CapsL = document.querySelector(".CapsLock");
+
+function capsPress() {
+  let container = document.querySelector(".controll");
+  if (caps === false) {
+    for (let i = 0; i < keys.length; i++) {
+      if (container.children[i].textContent.length === 1) {
+        container.children[i].textContent =
+          container.children[i].textContent.toUpperCase();
+      }
+    }
+    CapsL.classList.toggle("capsActive");
+    caps = true;
+  } else {
+    for (let i = 0; i < keys.length; i++) {
+      if (container.children[i].textContent.length === 1) {
+        container.children[i].textContent =
+          container.children[i].textContent.toLowerCase();
+      }
+    }
+    CapsL.classList.toggle("capsActive");
+    caps = false;
+  }
+}
+
+let cont = document.querySelector(".controll");
+CapsL.addEventListener("click", capsPress);
+
+function langPress() {
+  let container = document.querySelector(".controll");
+  if (lang === "en") {
+    for (let i = 0; i < keys.length; i++) {
+      if (
+        !CapsL.classList.contains("capsActive") &&
+        container.children[i].textContent.length === 1
+      ) {
+        container.children[i].textContent = keys[i].key.ru;
+      } else if (container.children[i].textContent.length === 1) {
+        container.children[i].textContent = keys[i].key.ru.toUpperCase();
+      }
+    }
+    lang = "ru";
+    langKey.textContent = "Язык";
+  } else {
+    for (let i = 0; i < keys.length; i++) {
+      if (
+        !CapsL.classList.contains("capsActive") &&
+        container.children[i].textContent.length === 1
+      ) {
+        container.children[i].textContent = keys[i].key.en;
+      }
+      else if (container.children[i].textContent.length === 1) {
+        container.children[i].textContent = keys[i].key.en.toUpperCase();
+      }
+    }
+    lang = "en";
+    langKey.textContent = "Lang";
+  }
+}
+
+let langKey = document.querySelector(".Lang");
+langKey.addEventListener("click", langPress);
 
 //function clickHandler(event) {
 //  if (event.yype == 'click')

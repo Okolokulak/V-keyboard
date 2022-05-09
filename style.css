@@ -46,13 +46,21 @@ h2 {
   background: linear-gradient(5deg, rgb(119, 115, 115), rgb(221, 220, 211));
   margin: 2px;
   box-shadow: 4px 3px 10px red;
+
+  font-size: 1em;
+}
+
+.key:hover {
+    background: rgb(163, 20, 20);
 }
 
 .active {
     animation-name: tap;
     animation-duration: 0.5s;
 }
-
+.capsActive {
+    background: aqua !important;
+}
 @keyframes tap {
     from {
         background: linear-gradient(5deg, rgb(119, 115, 115), rgb(221, 220, 211));
@@ -61,13 +69,4 @@ h2 {
         background: linear-gradient(5deg, black, black);
 
     }
-}
-
-.sasd {
-  grid-template-areas:
-    "Backquote Digit1 Digit2 Digit3 Digit4 Digit5 Digit6 Digit7 Digit8 Digit9 Digit0 Minus Equal Backspace"
-    "Tab KeyQ KeyW KeyE KeyR KeyT KeyY KeyU KeyI KeyQO KeyQP BracketLeft BracketRight Backslash"
-    "Capslock KeyA KeyS KeyD KeyF KeyG KeyH KeyJ KeyK KeyL Semicolon Quote Enter Enter"
-    "ShiftLeft KeyZ KeyX KeyC KeyV KeyB KeyN KeyM KeyQ Comma Period Slash ArrowUp ShiftRight"
-    "ControlLrft AltLeft Space Space Space AltRight ControlRight ArrowLeft ArrowDown ArrowRight Lang";
 }

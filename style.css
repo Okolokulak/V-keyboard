@@ -1,0 +1,91 @@
+body {
+    background: radial-gradient(circle,  rgb(219, 30, 30) 0%, rgb(214, 176, 164) 100%);
+
+}
+
+.inputContainer {
+    width: 500px;
+    left: 20%;
+}
+
+.input {
+    position: absolute;
+    border-radius: 15px;
+    padding: 20px;
+    top: 5%;
+    left: 26.5%;
+    font-size: 35px;
+    margin-top: 5%;
+    background-color: rgb(226, 139, 117);
+}
+h2 {
+    text-align: center;
+    text-shadow: 2px 2px 2px rgb(211, 59, 59);
+    font-size: 30px;
+}
+
+.controll {
+  position: absolute;
+  display: block;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  top: 40%;
+  left: 28%;
+  width: 810px;
+  height: 300px;
+  text-align: center;
+  background: linear-gradient(10deg, rgb(51, 35, 35), rgb(156, 43, 43))
+}
+.Backspace, .Tab, .CapsLock, .ShiftLeft {
+    width: 100px !important;
+}
+.Enter {
+    width: 106px !important;
+}
+.Space {
+    width: 370px !important;
+}
+.ShiftRight {
+    width: 106px !important;
+}
+.press {
+    transform: scale(0.8, 0.8);
+}
+.controll button {
+  display: block;
+  float: left;
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background: linear-gradient(5deg, rgb(119, 115, 115), rgb(221, 220, 211));
+  margin: 2px;
+  box-shadow: 4px 3px 10px red;
+
+  font-size: 1em;
+}
+
+.key:hover {
+    background: rgb(163, 20, 20);
+    transform: translate(0px, 5px);
+}
+
+.active {
+    animation-name: tap;
+    background: rgb(163, 20, 20);
+    transform: translate(1px, 3px) scale(0.98);
+
+}
+.capsActive {
+    background: rgb(163, 20, 20) !important;
+}
+@keyframes tap {
+    from {
+        background: linear-gradient(5deg, rgb(119, 115, 115), rgb(221, 220, 211));
+    }
+    to {
+        background: linear-gradient(5deg, rgb(165, 92, 92), rgb(0, 0, 0));
+
+    }
+}

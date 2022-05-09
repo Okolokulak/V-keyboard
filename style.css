@@ -1,0 +1,73 @@
+body {
+    background: linear-gradient( 45deg, rgb(152, 204, 247), rgb(162, 210, 255));
+}
+
+.inputContainer {
+    width: 500px;
+    left: 20%;
+}
+h2 {
+    text-align: center;
+}
+
+.controll {
+  position: absolute;
+  display: block;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  top: 50%;
+  left: 10%;
+  width: 810px;
+  height: 300px;
+  text-align: center;
+  background: linear-gradient(10deg, rgb(51, 35, 35), rgb(156, 43, 43))
+}
+.Backspace, .Tab, .CapsLock, .ShiftLeft {
+    width: 100px !important;
+}
+.Enter {
+    width: 106px !important;
+}
+.Space {
+    width: 370px !important;
+}
+.ShiftRight {
+    width: 106px !important;
+}
+
+.controll button {
+  display: block;
+  float: left;
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background: linear-gradient(5deg, rgb(119, 115, 115), rgb(221, 220, 211));
+  margin: 2px;
+  box-shadow: 4px 3px 10px red;
+}
+
+.active {
+    animation-name: tap;
+    animation-duration: 0.5s;
+}
+
+@keyframes tap {
+    from {
+        background: linear-gradient(5deg, rgb(119, 115, 115), rgb(221, 220, 211));
+    }
+    to {
+        background: linear-gradient(5deg, black, black);
+
+    }
+}
+
+.sasd {
+  grid-template-areas:
+    "Backquote Digit1 Digit2 Digit3 Digit4 Digit5 Digit6 Digit7 Digit8 Digit9 Digit0 Minus Equal Backspace"
+    "Tab KeyQ KeyW KeyE KeyR KeyT KeyY KeyU KeyI KeyQO KeyQP BracketLeft BracketRight Backslash"
+    "Capslock KeyA KeyS KeyD KeyF KeyG KeyH KeyJ KeyK KeyL Semicolon Quote Enter Enter"
+    "ShiftLeft KeyZ KeyX KeyC KeyV KeyB KeyN KeyM KeyQ Comma Period Slash ArrowUp ShiftRight"
+    "ControlLrft AltLeft Space Space Space AltRight ControlRight ArrowLeft ArrowDown ArrowRight Lang";
+}

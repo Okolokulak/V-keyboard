@@ -257,7 +257,7 @@ class Main {
   constructor(a, b, c) {
     this.element = document.createElement(a);
     this.element.classList.add(b);
-    c.append(this.element)
+    c.append(this.element);
   }
 }
 
@@ -340,7 +340,7 @@ function langPress() {
         container.children[i].textContent = keys[i].key.ru;
       } else if (container.children[i].textContent.length == 1) {
         container.children[i].textContent = keys[i].key.ru.toUpperCase();
-      } 
+      }
     }
     lang = "ru";
     langKey.textContent = "Язык";
@@ -353,7 +353,7 @@ function langPress() {
         container.children[i].textContent = keys[i].key.en;
       } else if (container.children[i].textContent.length === 1) {
         container.children[i].textContent = keys[i].key.en.toUpperCase();
-      } 
+      }
     }
     lang = "en";
     langKey.textContent = "Lang";
@@ -380,7 +380,14 @@ kb.forEach((e) => {
   e.addEventListener("click", (event) => {
     textarea.focus();
     if (event.target.textContent.length == 1) {
-      textarea.value = textarea.value.concat(event.target.textContent);
+      if (
+        event.target.textContent == "►" ||
+        event.target.textContent == "▲" ||
+        event.target.textContent == "▼" ||
+        event.target.textContent == "◄"
+      ) { textarea.value = textarea.value
+      } else {textarea.value = textarea.value.concat(event.target.textContent);}
+      
     } else if (event.target.textContent == "Caps Lock") {
       capsPress();
     } else if (
@@ -392,9 +399,7 @@ kb.forEach((e) => {
       backPress();
     } else if (event.target.textContent == "Enter") {
       enterPress();
-    } else if (
-      event.target.textContent == ""
-    ) {
+    } else if (event.target.textContent == "") {
       spacePress();
     }
   });
@@ -402,7 +407,7 @@ kb.forEach((e) => {
 
 document.addEventListener("keydown", (event) => {
   let activeKey = document.querySelector(`.${event.code}`);
-  activeKey.classList.add("active");
+  activeKey.classList.toggle("active");
   switch (event.key) {
     case "CapsLock":
       event.preventDefault();
@@ -436,9 +441,7 @@ document.addEventListener("keydown", (event) => {
 document.addEventListener("keyup", (event) => {
   let activeKey = document.querySelector(`.${event.code}`);
   function activeRemover() {
-    activeKey.classList.remove("active");
+    activeKey.classList.toggle("active");
   }
   setTimeout(activeRemover, 500);
 });
-
-

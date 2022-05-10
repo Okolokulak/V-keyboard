@@ -253,19 +253,25 @@ const keys = [
   },
 ];
 
-class Main {
-  constructor(a, b, c) {
+class Header {
+  constructor(a, b, c, d) {
     this.element = document.createElement(a);
     this.element.classList.add(b);
-    c.append(this.element);
+    this.element.innerHTML = c;
+    d.append(this.element);
   }
 }
 
-let title = document.createElement("h2");
 let doc = document.querySelector("body");
-title.innerHTML =
-  "Клавиатура <br> Для смены языка используйте специальную кнопку либо комбинацию Shift+Ctrl";
-doc.append(title);
+let titleContent = '"Клавиатура <br> Для смены языка используйте специальную кнопку либо комбинацию Shift+Ctrl"'
+let createTitle = () => new Header ('h2', 'title', titleContent, doc);
+
+//let title = document.createElement("h2");
+
+createTitle();
+//title.innerHTML =
+//  "Клавиатура <br> Для смены языка используйте специальную кнопку либо комбинацию Shift+Ctrl";
+//doc.append(title);
 let inputContainer = document.createElement("div");
 inputContainer.className = "inputContainer";
 let input = document.createElement("textarea");
@@ -385,9 +391,11 @@ kb.forEach((e) => {
         event.target.textContent == "▲" ||
         event.target.textContent == "▼" ||
         event.target.textContent == "◄"
-      ) { textarea.value = textarea.value
-      } else {textarea.value = textarea.value.concat(event.target.textContent);}
-      
+      ) {
+        textarea.value = textarea.value;
+      } else {
+        textarea.value = textarea.value.concat(event.target.textContent);
+      }
     } else if (event.target.textContent == "Caps Lock") {
       capsPress();
     } else if (
@@ -445,3 +453,5 @@ document.addEventListener("keyup", (event) => {
   }
   setTimeout(activeRemover, 500);
 });
+
+

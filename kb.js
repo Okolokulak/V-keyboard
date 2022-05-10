@@ -53,11 +53,11 @@ const keys = [
   },
   {
     key: { ru: "Backspace", en: "Backspace" },
-    class: "key key_backspace Backspace",
+    class: "key Backspace",
   },
   {
     key: { ru: "Tab", en: "Tab" },
-    class: "key key_tab Tab",
+    class: "key Tab",
   },
   {
     key: { ru: "й", en: "q" },
@@ -109,7 +109,7 @@ const keys = [
   },
   {
     key: { ru: "\\", en: "\\" },
-    class: "key key_backslash Backslash",
+    class: "key Backslash",
   },
   {
     key: { ru: "Caps Lock", en: "Caps Lock" },
@@ -161,11 +161,11 @@ const keys = [
   },
   {
     key: { ru: "Enter", en: "Enter" },
-    class: "key key_enter Enter",
+    class: "key Enter",
   },
   {
     key: { ru: "Shift", en: "Shift" },
-    class: "key key_leftshift ShiftLeft",
+    class: "key ShiftLeft",
   },
   {
     key: { ru: "я", en: "z" },
@@ -213,27 +213,27 @@ const keys = [
   },
   {
     key: { ru: "Shift", en: "Shift" },
-    class: "key key_rightshift ShiftRight",
+    class: "key ShiftRight",
   },
   {
     key: { ru: "Ctrl", en: "Ctrl" },
-    class: "key key_leftctrl ControlLeft",
+    class: "key ControlLeft",
   },
   {
     key: { ru: "Alt", en: "Alt" },
-    class: "key key_leftalt AltLeft",
+    class: "key AltLeft",
   },
   {
     key: { ru: "", en: "" },
-    class: "key key_space Space",
+    class: "key Space",
   },
   {
     key: { ru: "Alt", en: "Alt" },
-    class: "key key_rightalt AltRight",
+    class: "key AltRight",
   },
   {
     key: { ru: "Ctrl", en: "Ctrl" },
-    class: "key key_rightctrl ControlRight",
+    class: "key ControlRight",
   },
   {
     key: { ru: "◄", en: "◄" },
@@ -249,7 +249,7 @@ const keys = [
   },
   {
     key: { ru: "Язык", en: "Lang" },
-    class: "key key_lang Lang",
+    class: "key Lang",
   },
 ];
 
@@ -263,15 +263,12 @@ class Header {
 }
 
 let doc = document.querySelector("body");
-let titleContent = '"Клавиатура <br> Для смены языка используйте специальную кнопку либо комбинацию Shift+Ctrl"'
-let createTitle = () => new Header ('h2', 'title', titleContent, doc);
-
-//let title = document.createElement("h2");
+let titleContent =
+"Virtual Keyboard <br> To change the language use dedicated button or Shift+Ctrl";
+let createTitle = () => new Header("h2", "title", titleContent, doc);
 
 createTitle();
-//title.innerHTML =
-//  "Клавиатура <br> Для смены языка используйте специальную кнопку либо комбинацию Shift+Ctrl";
-//doc.append(title);
+
 let inputContainer = document.createElement("div");
 inputContainer.className = "inputContainer";
 let input = document.createElement("textarea");
@@ -338,6 +335,8 @@ function capsPress() {
 function langPress() {
   let container = document.querySelector(".controll");
   if (lang === "en") {
+    document.querySelector(".title").innerHTML =
+      "Виртуальная Клавиатура <br> Для смены языка используйте специальную кнопку либо комбинацию Shift+Ctrl";
     for (let i = 0; i < keys.length; i++) {
       if (
         !CapsL.classList.contains("capsActive") &&
@@ -351,6 +350,7 @@ function langPress() {
     lang = "ru";
     langKey.textContent = "Язык";
   } else {
+    document.querySelector(".title").innerHTML = "Virtual Keyboard <br> To change the language use dedicated button or Shift+Ctrl"
     for (let i = 0; i < keys.length; i++) {
       if (
         !CapsL.classList.contains("capsActive") &&
@@ -453,5 +453,3 @@ document.addEventListener("keyup", (event) => {
   }
   setTimeout(activeRemover, 500);
 });
-
-
